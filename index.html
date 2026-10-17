@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThreadCo | Haute Halloween Streetwear & Dark Gothic Apparel</title>
+  <meta name="description" content="Summon high-fashion Halloween streetwear, gothic velvet cloaks, and glowing techwear from ThreadCo's exclusive All Hallows' Eve collection." />
+  <meta name="keywords" content="ThreadCo, Halloween clothing, dark fashion, gothic streetwear, vampire cloak, skeleton knit, Halloween drip" />
+  <meta name="theme-color" content="#07060a" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+</head>
+<body>
+
+  <!-- Ambient Spiderweb Pattern & Particle Canvas -->
+  <div class="web-overlay" aria-hidden="true"></div>
+  <canvas id="halloween-canvas" aria-hidden="true"></canvas>
+
+  <!-- Interactive Spooky Glow Cursor -->
+  <div id="spooky-cursor" aria-hidden="true"></div>
+  <div id="spooky-cursor-dot" aria-hidden="true"></div>
+
+  <!-- Modal Backdrop for Drawers & Popups -->
+  <div id="modal-backdrop" class="modal-backdrop"></div>
+
+  <!-- ============================================================
+       TOP HALLOWEEN PROMOTIONAL TICKER
+       ============================================================ -->
+  <div class="ticker-banner" role="region" aria-label="Halloween Announcements">
+    <div class="ticker-track">
+      <div class="ticker-item">
+        <span>🎃 ALL HALLOWS' EVE EXCLUSIVE DROP</span>
+        <span class="highlight">• ONLY 666 PIECES WOVEN PER DESIGN</span>
+        <span class="promo-tag">CODE: BLOODMOON (20% OFF)</span>
+        <span>🦇 FREE CURSED SHIPPING OVER $99</span>
+        <span>⚡ SHIPS DIRECT FROM OUR SALEM CRYPT</span>
+      </div>
+      <div class="ticker-item">
+        <span>🎃 ALL HALLOWS' EVE EXCLUSIVE DROP</span>
+        <span class="highlight">• ONLY 666 PIECES WOVEN PER DESIGN</span>
+        <span class="promo-tag">CODE: BLOODMOON (20% OFF)</span>
+        <span>🦇 FREE CURSED SHIPPING OVER $99</span>
+        <span>⚡ SHIPS DIRECT FROM OUR SALEM CRYPT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SITE HEADER & NAVIGATION
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo-wrap" id="brand-logo" aria-label="ThreadCo Home">
+        <div class="brand-crest">
+          <span>🕷️</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">ThreadCo</span>
+          <span class="brand-subtitle">Halloween '26</span>
+        </div>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#catalog" class="nav-link active">Cursed Garments</a></li>
+          <li><a href="#size-chart" class="nav-link" onclick="app.openSizeChart('hoodies', event)">Size Chart</a></li>
+          <li><a href="#ouija-reviews" class="nav-link">Ouija Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Raven Dispatch</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Utilities -->
+      <div class="header-actions">
+        <!-- Spooky Ambient Audio Toggle -->
+        <button id="sound-toggle" class="sound-toggle-btn" title="Toggle Eerie Ambient Atmosphere" aria-label="Toggle Halloween Audio">
+          <span class="sound-icon">🎧</span>
+          <span id="sound-toggle-label">Spook Audio: OFF</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button class="action-icon-btn" id="wishlist-trigger-btn" onclick="app.showToast('Your cursed wishlist items are marked with glowing hearts! 🖤')" title="Cursed Wishlist" aria-label="Wishlist">
+          <span>🖤</span>
+          <span class="badge-counter" id="wishlist-badge">0</span>
+        </button>
+
+        <!-- Coven Cart Button -->
+        <button class="action-icon-btn" id="cart-trigger-btn" onclick="app.openCartDrawer()" title="Open Coven Cart" aria-label="Coven Cart">
+          <span>🛒</span>
+          <span class="badge-counter" id="cart-count">0</span>
+        </button>
+      </div>
+
+      <!-- Hanging Interactive Spider -->
+      <div class="hanging-spider-wrap" id="hanging-spider" title="Click me if you dare!">
+        <div class="spider-thread"></div>
+        <div class="spider-body">🕷️</div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO CAMPAIGN SHOWCASE
+       ============================================================ -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      
+      <!-- Left Hero Text Column -->
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="flicker">🎃</span>
+          <span>ALL HALLOWS' HAUTE COUTURE</span>
+        </div>
+
+        <h1 class="hero-title">
+          Drape Yourself In <br />
+          <span class="glow-word">Immortal</span> <br />
+          <span class="gradient-word">Midnight Drip</span>
+        </h1>
+
+        <p class="hero-description">
+          Engineered in the shadows for nocturnal souls. High-density organic French terry, 
+          luminous phosphor bones, and blood-velvet cloaks tailored to haunt every corridor you enter. 
+          Step beyond mortal fashion.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#catalog" class="spooky-btn-primary" id="hero-summon-cta">
+            <span>Summon Collection 🎃</span>
+          </a>
+          <button class="spooky-btn-secondary" onclick="app.openSizeChart('hoodies', event)">
+            <span>📏 Vessel Sizing Guide</span>
+          </button>
+        </div>
+
+        <!-- Witching Midnight Live Countdown -->
+        <div class="countdown-box" id="witching-countdown">
+          <div class="countdown-label">
+            <span class="cd-title">Witching Hour Countdown</span>
+            <span class="cd-subtitle">Drop Banishes At Midnight</span>
+          </div>
+          <div class="countdown-digits">
+            <div class="cd-digit-block">
+              <span class="cd-num" id="cd-hours">72</span>
+              <span class="cd-unit">Hours</span>
+            </div>
+            <span class="cd-colon">:</span>
+            <div class="cd-digit-block">
+              <span class="cd-num" id="cd-minutes">48</span>
+              <span class="cd-unit">Mins</span>
+            </div>
+            <span class="cd-colon">:</span>
+            <div class="cd-digit-block">
+              <span class="cd-num" id="cd-seconds">13</span>
+              <span class="cd-unit">Secs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Hero Visual Card -->
+      <div class="hero-visual-col">
+        <div class="hero-visual-card">
+          <img 
+            src="assets/images/hero.jpg" 
+            alt="ThreadCo Halloween Streetwear Collection" 
+            class="hero-banner-img"
+          />
+          <div class="ambient-fog-layer"></div>
+          <div class="hero-floating-badge">
+            <div class="hfb-info">
+              <h4>ThreadCo Atelier '26</h4>
+              <p>Handcrafted in Salem, Massachusetts</p>
+            </div>
+            <span class="hfb-pill">Limited Curse</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CURSED CLOTHING CATALOG SECTION
+       ============================================================ -->
+  <section class="catalog-section" id="catalog">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-head">
+        <div class="section-eyebrow">
+          <span>🕯️</span>
+          <span>THE NOCTURNAL WARDROBE</span>
+        </div>
+        <h2 class="section-title">The Cursed Artifacts</h2>
+        <p class="section-subtitle">
+          Hover over each garment to ignite its spectral aura. Select your vessel size and summon pieces directly into your coven cart.
+        </p>
+      </div>
+
+      <!-- Halloween Collection Spotlights Grid -->
+      <div class="coven-spotlights-grid">
+        <div class="spotlight-card" onclick="app.setCategory('hoodies'); if(window.halloweenFX) window.halloweenFX.playSpookySound('hover')">
+          <img src="assets/images/collection_hoodies.jpg" alt="Nocturnal Knits & Runes" class="spotlight-img" />
+          <div class="spotlight-overlay">
+            <span class="spotlight-tag">🎃 Curated Drop</span>
+            <h3 class="spotlight-title">Nocturnal Knits & Runes</h3>
+            <span class="spotlight-cta">Summon Hoodies →</span>
+          </div>
+        </div>
+        <div class="spotlight-card" onclick="app.setCategory('cloaks'); if(window.halloweenFX) window.halloweenFX.playSpookySound('hover')">
+          <img src="assets/images/collection_cloaks.jpg" alt="Vampire Velvet Cloaks" class="spotlight-img" />
+          <div class="spotlight-overlay">
+            <span class="spotlight-tag">🦇 Transylvanian Vaults</span>
+            <h3 class="spotlight-title">Vampire Velvet & Dusters</h3>
+            <span class="spotlight-cta">Summon Cloaks →</span>
+          </div>
+        </div>
+        <div class="spotlight-card" onclick="app.setCategory('gowns'); if(window.halloweenFX) window.halloweenFX.playSpookySound('hover')">
+          <img src="assets/images/collection_witch.jpg" alt="Witchcraft Haute Gowns" class="spotlight-img" />
+          <div class="spotlight-overlay">
+            <span class="spotlight-tag">🔮 Salem Coven</span>
+            <h3 class="spotlight-title">Witchcraft & Techwear</h3>
+            <span class="spotlight-cta">Summon Gowns →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalog Controls & Filters -->
+      <div class="catalog-controls">
+        
+        <div class="controls-top-row">
+          <!-- Realtime Search -->
+          <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="catalog-search-input" 
+              placeholder="Search by garment, fabric, rune, or curse..."
+              aria-label="Search clothing items"
+            />
+          </div>
+
+          <!-- Counter & Sort Dropdown -->
+          <div class="controls-actions">
+            <span class="catalog-counter-tag" id="catalog-count">12 Cursed Artifacts</span>
+            <div class="sort-select-wrap">
+              <select class="sort-select" id="catalog-sort-select" aria-label="Sort garments">
+                <option value="featured">Sort: Featured Spooks 🎃</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Skull Rating 💀</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs" role="tablist">
+          <button class="filter-tab-btn active" data-cat="all" onclick="app.setCategory('all')">
+            <span>✨ All Cursed Drops</span>
+          </button>
+          <button class="filter-tab-btn" data-cat="hoodies" onclick="app.setCategory('hoodies')">
+            <span>🕷️ Hoodies & Knits</span>
+          </button>
+          <button class="filter-tab-btn" data-cat="cloaks" onclick="app.setCategory('cloaks')">
+            <span>🦇 Cloaks & Outerwear</span>
+          </button>
+          <button class="filter-tab-btn" data-cat="gowns" onclick="app.setCategory('gowns')">
+            <span>🔮 Witch Gowns</span>
+          </button>
+          <button class="filter-tab-btn" data-cat="streetwear" onclick="app.setCategory('streetwear')">
+            <span>⚡ Cyber-Streetwear</span>
+          </button>
+          <button class="filter-tab-btn" data-cat="accessories" onclick="app.setCategory('accessories')">
+            <span>💀 Cursed Accessories</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Dynamic Product Grid of Profile Cards -->
+      <div class="products-grid" id="products-grid">
+        <!-- Rendered via js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUIJA BOARD OF SPIRIT REVIEWS (Unique Customer Reviews)
+       ============================================================ */
+  -->
+  <section class="ouija-section" id="ouija-reviews">
+    <div class="container">
+      
+      <div class="ouija-board-container">
+        
+        <!-- Ouija Header Design -->
+        <div class="ouija-header-bar">
+          <div class="ouija-sun-moon-row">
+            <span>☀️ YES</span>
+            <span>NO 🌙</span>
+          </div>
+          <h2 class="ouija-main-title">OUIJA SPIRIT TESTIMONIALS</h2>
+          <div class="ouija-alphabet-arch">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+        </div>
+
+        <!-- Interactive Ouija Planchette -->
+        <div class="ouija-planchette-wrap">
+          <div class="ouija-planchette" id="ouija-planchette" title="The Planchette points to genuine spirit reviews">
+            <div class="planchette-lens"></div>
+          </div>
+        </div>
+
+        <!-- Spirit Reviews Grid -->
+        <div class="ouija-reviews-grid" id="ouija-reviews-list">
+          <!-- Rendered via js/app.js -->
+        </div>
+
+        <!-- Submit a Review Form (Speak Through the Veil) -->
+        <div class="ouija-form-box">
+          <h3 class="ouija-form-title">Speak Through The Veil</h3>
+          <p class="ouija-form-desc">Have you draped yourself in ThreadCo garments? Etch your testimony into our supernatural board.</p>
+
+          <form id="ouija-review-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="review-spirit-name">Your Mortal / Spirit Moniker</label>
+                <input type="text" id="review-spirit-name" required placeholder="e.g. Lady Carmilla" />
+              </div>
+              <div class="form-group">
+                <label for="review-realm">Realm of Origin</label>
+                <input type="text" id="review-realm" required placeholder="e.g. New Orleans Crypts" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="review-garment">Garment Summoned</label>
+                <select id="review-garment">
+                  <option value="Runic Chaos Heavyweight Hoodie">Runic Chaos Heavyweight Hoodie</option>
+                  <option value="Crimson Crypt Victorian Velvet Cloak">Crimson Crypt Victorian Velvet Cloak</option>
+                  <option value="Abyssal Ribcage Distressed Knit Jumper">Abyssal Ribcage Distressed Knit Jumper</option>
+                  <option value="Nocturne Spiderweb Corset Gown">Nocturne Spiderweb Corset Gown</option>
+                  <option value="Phantom Techwear Bat-Crest Bomber">Phantom Techwear Bat-Crest Bomber</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="review-skulls">Skull Rating</label>
+                <select id="review-skulls">
+                  <option value="5">💀💀💀💀💀 (5/5 Immortal)</option>
+                  <option value="4">💀💀💀💀 (4/5 Haunting)</option>
+                  <option value="3">💀💀💀 (3/5 Spooky)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="review-quote">Your Supernatural Verdict</label>
+              <textarea id="review-quote" rows="3" required placeholder="Describe how the cloth feels on your mortal vessel..."></textarea>
+            </div>
+
+            <div style="text-align: center;">
+              <button type="submit" class="spooky-btn-primary">
+                <span>Engrave Testimony 📜</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT COLUMN & RAVEN DISPATCH
+       ============================================================ -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      
+      <div class="contact-layout">
+        
+        <!-- Small Contact Details Column -->
+        <div class="contact-info-col">
+          <div>
+            <div class="section-eyebrow">
+              <span>🦇</span>
+              <span>NOCTURNAL COMMUNION</span>
+            </div>
+            <h2 class="section-title">Raven Dispatch Sanctuary</h2>
+            <p class="section-subtitle">
+              Need custom astral measurements, wholesale coven cloaks, or tracking for an airborne bat delivery?
+            </p>
+
+            <ul class="coven-address-list">
+              <li class="address-item">
+                <div class="address-icon">📍</div>
+                <div class="address-text">
+                  <h5>ThreadCo Coven Sanctuary</h5>
+                  <p>666 Cobweb Alley, Historic Salem District, MA 01970</p>
+                </div>
+              </li>
+              <li class="address-item">
+                <div class="address-icon">✉️</div>
+                <div class="address-text">
+                  <h5>Astral Transmission Mail</h5>
+                  <p>coven@threadco.dark</p>
+                </div>
+              </li>
+              <li class="address-item">
+                <div class="address-icon">🦇</div>
+                <div class="address-text">
+                  <h5>Raven Speed Guarantee</h5>
+                  <p>Inquiries answered before the witching hour strikes.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="coven-hours-card">
+            <strong>🌙 Sanctum Hours:</strong> Dusk until dawn (6:00 PM – 6:00 AM EST). Mortals welcomed after nightfall.
+          </div>
+        </div>
+
+        <!-- Contact Form Column -->
+        <div class="contact-form-col">
+          <h3 class="coven-form-title">Summon The Coven</h3>
+
+          <form id="coven-contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Mortal Name</label>
+                <input type="text" id="contact-name" required placeholder="Lord or Lady of the Night" />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Astral Email</label>
+                <input type="email" id="contact-email" required placeholder="your.name@crypt.com" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-type">Purpose of Summoning</label>
+              <select id="contact-type">
+                <option value="order">Order Tracking / Crypt Dispatch</option>
+                <option value="sizing">Custom Fit & Sizing Curse</option>
+                <option value="coven">Wholesale / High Coven Inquiries</option>
+                <option value="spell">Defective Spell / Garment Return</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Parchment Note</label>
+              <textarea id="contact-message" rows="4" required placeholder="Inscribe your inquiry here..."></textarea>
+            </div>
+
+            <button type="submit" class="spooky-btn-primary" id="send-raven-btn" style="width: 100%; justify-content: center;">
+              <span>Release Dispatch Raven 🦇</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SITE FOOTER WITH CREATIVE SHOPPER ODE & COMPANY RIGHTS
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Creative Shopper Message Plaque -->
+      <div class="footer-shopper-ode-card">
+        <div class="shopper-ode-badge">
+          <span>✨ TO THE CHOSEN MORTAL WHO SHOPPED</span>
+        </div>
+        <h3 class="shopper-ode-title">A Dark Ode To You, Brave Fiend</h3>
+        <p class="shopper-ode-content">
+          "You dared to cross the threshold into the nocturnal shadows of ThreadCo and emerged draped in immortal drip. 
+          May your seams never fray, your hood cast the perfect shadow, your collar stay sharp as a vampire’s fang, 
+          and your silhouette turn heads in this mortal realm and the next. Thank you for fueling our coven’s nocturnal craft. 
+          Go forth and haunt the streets in absolute luxury!"
+        </p>
+        <span class="shopper-ode-signature">— The Grand Coven & Master Tailors of ThreadCo 🎃🦇🖤</span>
+      </div>
+
+      <!-- Main Footer Columns -->
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo-wrap" style="margin-bottom: 16px;">
+            <div class="brand-crest"><span>🕷️</span></div>
+            <div class="brand-text">
+              <span class="brand-title">ThreadCo</span>
+              <span class="brand-subtitle">Halloween Edition</span>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 320px;">
+            Pioneering dark gothic streetwear and haute couture garments designed for those who walk in the night. 
+            Woven with passion, darkness, and supernatural precision.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>The Wardrobe</h4>
+          <ul class="footer-links">
+            <li><a href="#catalog" onclick="app.setCategory('hoodies')">Rune Hoodies</a></li>
+            <li><a href="#catalog" onclick="app.setCategory('cloaks')">Victorian Velvet Cloaks</a></li>
+            <li><a href="#catalog" onclick="app.setCategory('gowns')">Spiderweb Witch Gowns</a></li>
+            <li><a href="#catalog" onclick="app.setCategory('streetwear')">Cyber Techwear Bombers</a></li>
+            <li><a href="#catalog" onclick="app.setCategory('accessories')">Cursed Talismans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Spooky Guides</h4>
+          <ul class="footer-links">
+            <li><a href="#size-chart" onclick="app.openSizeChart('hoodies', event)">Garment Size Chart</a></li>
+            <li><a href="#size-chart" onclick="app.openSizeChart('cloaks', event)">Ghost Fit Recommender</a></li>
+            <li><a href="#ouija-reviews">Ouija Testimonials</a></li>
+            <li><a href="#contact">Salem Sanctuary</a></li>
+            <li><a href="#contact">Raven Speed Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>The Coven Gazette</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Subscribe your mortal email to receive secret nocturnal flash drops and hex discount codes.
+          </p>
+          <div class="promo-row">
+            <input type="email" placeholder="mortal@coven.dark" aria-label="Subscribe email" />
+            <button onclick="app.showToast('You are now bound to The Coven Gazette! 🦇')">Bind</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Rights & Legal Notice -->
+      <div class="footer-rights-box">
+        <div class="company-rights-text">
+          <p>
+            <strong>© 2026 ThreadCo Apparel Ltd. All Dark Rights Reserved.</strong> 
+            Any unauthorized commercial duplication, counterfeit stitching, necromantic cloning, 
+            or astral projection of our proprietary garment patterns will result in eternal haunting by our chief design coven. 
+            Woven from ethically sourced organic cotton, royal mulberry silk, and nocturnal devotion.
+          </p>
+        </div>
+        <div class="payment-spooky-icons" title="Accepted Payment Tokens">
+          <span>💀</span>
+          <span>💳</span>
+          <span>🍎</span>
+          <span>💎</span>
+          <span>⚡</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       INTERACTIVE SIZE CHART MODAL
+       ============================================================ -->
+  <div class="spooky-modal" id="size-chart-modal" role="dialog" aria-modal="true" aria-labelledby="size-chart-title">
+    <div class="modal-header">
+      <div>
+        <h3 class="gothic-title" id="size-chart-title" style="color: #fff; font-family: var(--font-display); font-size: 1.5rem;">
+          📏 Vessel Size & Measurement Chart
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">
+          Every garment is meticulously proportioned. Compare your mortal body measurements below.
+        </p>
+      </div>
+      <button class="modal-close-btn" onclick="app.closeSizeChart()" aria-label="Close Size Chart">✕</button>
+    </div>
+
+    <!-- Visual Vessel Measurement Illustration -->
+    <div class="size-diagram-banner">
+      <img src="assets/images/size_guide_diagram.jpg" alt="ThreadCo Vessel Measurement Protocol" class="size-diagram-img" />
+      <div class="size-diagram-caption">
+        <span>📐 ThreadCo Anatomy Protocol: Proportion Guide for Mortal Vessels & Apparitions</span>
+      </div>
+    </div>
+
+    <!-- Controls: Category Tabs & Unit Switch -->
+    <div class="size-chart-controls">
+      <div class="size-chart-tabs">
+        <button class="size-chart-tab active" data-cat="hoodies" onclick="app.setSizeChartCategory('hoodies')">Hoodies & Knits</button>
+        <button class="size-chart-tab" data-cat="cloaks" onclick="app.setSizeChartCategory('cloaks')">Cloaks & Outerwear</button>
+        <button class="size-chart-tab" data-cat="gowns" onclick="app.setSizeChartCategory('gowns')">Witch Gowns</button>
+        <button class="size-chart-tab" data-cat="streetwear" onclick="app.setSizeChartCategory('streetwear')">Techwear & Bottoms</button>
+      </div>
+
+      <div class="unit-switch-group">
+        <button class="unit-btn active" id="unit-btn-in" onclick="app.toggleSizeUnit('in')">Inches (in)</button>
+        <button class="unit-btn" id="unit-btn-cm" onclick="app.toggleSizeUnit('cm')">Centimeters (cm)</button>
+      </div>
+    </div>
+
+    <!-- Dynamic Measurements Table -->
+    <div class="size-table-wrapper" id="size-chart-table-container">
+      <!-- Injected by js/app.js -->
+    </div>
+
+    <!-- Interactive Ghost Fit Advisor Calculator -->
+    <div class="fit-advisor-section">
+      <h4 class="fit-advisor-title"><span>🔮</span> Ghost Fit Advisor</h4>
+      <p class="fit-advisor-desc">Enter your vessel's height, weight, and fit preference to summon your exact size recommendation.</p>
+      
+      <div class="advisor-inputs-row">
+        <div class="advisor-input-item">
+          <label for="advisor-height">Height (cm)</label>
+          <input type="number" id="advisor-height" value="175" min="140" max="220" />
+        </div>
+        <div class="advisor-input-item">
+          <label for="advisor-weight">Weight (kg)</label>
+          <input type="number" id="advisor-weight" value="70" min="40" max="160" />
+        </div>
+        <div class="advisor-input-item">
+          <label for="advisor-build">Fit Style</label>
+          <select id="advisor-build">
+            <option value="regular">Tailored Silhouette</option>
+            <option value="oversized" selected>Gothic Oversized Drip</option>
+          </select>
+        </div>
+        <button class="advisor-btn" id="calc-fit-btn">
+          <span>Summon My Size ✨</span>
+        </button>
+      </div>
+
+      <div id="advisor-result"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUICK VIEW MODAL
+       ============================================================ -->
+  <div class="spooky-modal" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Garment Details">
+    <div class="modal-header" style="border: none; padding-bottom: 0; margin-bottom: 8px;">
+      <div></div>
+      <button class="modal-close-btn" onclick="app.closeQuickView()" aria-label="Close modal">✕</button>
+    </div>
+    <div id="quick-view-body">
+      <!-- Injected by js/app.js -->
+    </div>
+  </div>
+
+  <!-- ============================================================
+       COVEN CART SLIDE-OVER DRAWER
+       ============================================================ -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Coven Cart Drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><span>🦇</span> Coven Cart</h3>
+      <button class="modal-close-btn" onclick="app.closeCartDrawer()" aria-label="Close Cart">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="free-shipping-box">
+      <div class="free-shipping-text" id="free-shipping-text">Add $99 for Free Cursed Shipping</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="free-shipping-progress" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Line items list -->
+    <div class="cart-drawer-items" id="cart-drawer-items">
+      <!-- Injected via js/app.js -->
+    </div>
+
+    <!-- Cart Footer with Totals & Checkout -->
+    <div class="cart-drawer-footer">
+      <div class="promo-row">
+        <input type="text" id="promo-input" placeholder="Promo Hex (Try BLOODMOON)" />
+        <button id="apply-promo-btn" onclick="app.applyPromoCode()">Apply</button>
+      </div>
+
+      <div class="cart-totals-breakdown">
+        <div class="cart-total-row">
+          <span>Cursed Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-total-row" style="color: var(--glow-green);">
+          <span>Blood Moon Discount</span>
+          <span id="cart-discount">-$0.00</span>
+        </div>
+        <div class="cart-total-row grand-total">
+          <span>Total Offering</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+      </div>
+
+      <button class="spooky-btn-primary checkout-seal-btn" onclick="app.openCheckoutModal()">
+        <span>Proceed To Crypt Checkout 🎃</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       CHECKOUT MODAL (Banish Soul / Place Order)
+       ============================================================ -->
+  <div class="spooky-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal-header">
+      <h3 class="gothic-title" style="color: #fff; font-family: var(--font-display); font-size: 1.4rem;">
+        🔮 Crypt Checkout & Order Binding
+      </h3>
+      <button class="modal-close-btn" onclick="app.closeCheckoutModal()" aria-label="Close Checkout">✕</button>
+    </div>
+    <div id="checkout-modal-body">
+      <!-- Injected by js/app.js (with order summary, form, and final creative message) -->
+    </div>
+  </div>
+
+  <!-- Floating Halloween Sound Effects Dock -->
+  <aside class="sound-fx-dock" id="sound-fx-dock" aria-label="Halloween Sound Effects Control">
+    <div class="sound-fx-bar">
+      <div class="sound-fx-head">
+        <span class="sfx-pulse-orb"></span>
+        <span class="sound-fx-title">COVEN SOUND FX</span>
+        <button class="sound-fx-mute-btn" id="soundboard-toggle-btn" onclick="halloweenFX.toggleAudio()" title="Mute/Unmute Audio">MUTE</button>
+      </div>
+      <div class="sound-fx-btn-row">
+        <button class="sfx-btn" data-sound-fx="lightning" title="Thunder & Lightning">⚡ Thunder</button>
+        <button class="sfx-btn" data-sound-fx="cackle" title="Witch Cackle">🧙 Cackle</button>
+        <button class="sfx-btn" data-sound-fx="bat" title="Bat Swarm">🦇 Bat</button>
+        <button class="sfx-btn" data-sound-fx="whisper" title="Spirit Whisper">👻 Whisper</button>
+        <button class="sfx-btn" data-sound-fx="bubble" title="Cauldron Boil">🫕 Bubble</button>
+        <button class="sfx-btn" data-sound-fx="bell" title="Crypt Bell">🔔 Bell</button>
+        <button class="sfx-btn" data-sound-fx="raven" title="Raven Caw">🦅 Raven</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Initialize Default Checkout Markup on Load -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.app) {
+        window.app.resetCheckoutModalMarkup();
+      }
+    });
+  </script>
+</body>
+</html>
